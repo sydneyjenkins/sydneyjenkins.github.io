@@ -295,9 +295,9 @@
 				}
 				@media screen and (max-width: 736px) {
 					#wavelength-control {
-						bottom: 0;
-						right: 0;
-						left: 0;
+						position: static;
+						width: 100%;
+						box-sizing: border-box;
 						text-align: center;
 						background: rgba(0,0,0,0.5);
 						padding: 0.5rem 1rem;
@@ -344,6 +344,16 @@
 							</div>
 						</div>
 					</header>
+
+				<!-- Wavelength filter control -->
+					<div id="wavelength-control">
+						<div id="wavelength-label">λ = 15.0 μm</div>
+						<div class="wl-slider-row">
+							<span class="wl-end">1 μm</span>
+							<input type="range" id="wavelength-slider" min="1" max="30" step="0.1" value="15">
+							<span class="wl-end">30 μm</span>
+						</div>
+					</div>
 
 				<!-- Main -->
 					<div id="main">
@@ -770,15 +780,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-		<!-- Wavelength filter control -->
-			<div id="wavelength-control">
-				<div id="wavelength-label">λ = 15.0 μm</div>
-				<div class="wl-slider-row">
-					<span class="wl-end">1 μm</span>
-					<input type="range" id="wavelength-slider" min="1" max="30" step="0.1" value="15">
-					<span class="wl-end">30 μm</span>
-				</div>
-			</div>
 
 		<!-- Starfield -->
 			<script>
