@@ -315,7 +315,8 @@
 					}
 				}
 				@media screen and (max-width: 736px) {
-					body:has(article.active) #wavelength-control {
+					body.is-article-visible #wavelength-control,
+					body.is-switching #wavelength-control {
 						display: none;
 					}
 				}
