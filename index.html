@@ -1036,8 +1036,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						canvases.forEach(function (p) {
 							pdf.getPage(p.num).then(function (page) {
 								var w = container.clientWidth;
+								var dpr = window.devicePixelRatio || 1;
 								var vp = page.getViewport({ scale: 1.0 });
-								var scale = w / vp.width;
+								var scale = (w / vp.width) * dpr;
 								var sv = page.getViewport({ scale: scale });
 								p.canvas.width = sv.width;
 								p.canvas.height = sv.height;
