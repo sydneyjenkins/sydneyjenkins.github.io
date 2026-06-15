@@ -265,6 +265,21 @@
 					background: rgba(80, 180, 230, 0.12);
 					border: solid 1px rgba(80, 180, 230, 0.4);
 				}
+				@media screen and (max-width: 736px) {
+					.header-inner {
+						flex-direction: column !important;
+						align-items: center !important;
+						text-align: center !important;
+					}
+					.header-photo {
+						width: 140px;
+						height: 220px;
+					}
+					.header-text h1,
+					.header-text p {
+						text-align: center;
+					}
+				}
 </style>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 	</head>
