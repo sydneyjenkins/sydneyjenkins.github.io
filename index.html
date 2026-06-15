@@ -945,7 +945,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						var s = stars[i];
 						if (s.brightness < 0.01) continue;
 						var twinkle = (Math.sin(6.2832 * s.freq * t + s.phase) + 1) * 0.5;
-						var alpha   = Math.min(1.0, s.brightness * 3.5 * (0.15 + 0.85 * twinkle));
+						var alpha   = Math.min(1.0, s.brightness * 4.5 * (0.15 + 0.85 * twinkle));
 						ctx.beginPath();
 						ctx.arc(s.x * w, s.y * h, s.radius, 0, 6.2832);
 						ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha.toFixed(3) + ')';
