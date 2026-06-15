@@ -15,7 +15,258 @@
 			p.small {
 			  line-height: 0.9;
 			}
-		</style>
+			#bg:after {
+				background-image: none;
+				background-color: #000;
+				z-index: 0;
+			}
+			#bg:before {
+				background-image: none;
+				background-color: rgba(19, 21, 25, 0);
+			}
+			#header {
+				background-image: none;
+			}
+			#starfield {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+			body.is-article-visible #starfield {
+				-webkit-filter: blur(0.2rem);
+				filter: blur(0.2rem);
+				opacity: 0.7;
+				-moz-transition: opacity 0.325s ease-in-out, -moz-filter 0.325s ease-in-out;
+				-webkit-transition: opacity 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
+				transition: opacity 0.325s ease-in-out, filter 0.325s ease-in-out;
+			}
+			#wavelength-control {
+				position: fixed;
+				bottom: 2rem;
+				right: 2rem;
+				z-index: 10;
+				text-align: right;
+				pointer-events: all;
+				-webkit-user-select: none;
+				user-select: none;
+			}
+			#wavelength-label {
+				color: rgba(255,255,255,0.6);
+				font-family: Source Sans Pro, Helvetica, sans-serif;
+				font-size: 0.75rem;
+				letter-spacing: 0.12em;
+				margin-bottom: 0.5rem;
+			}
+			.wl-slider-row {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+			}
+			.wl-end {
+				color: rgba(255,255,255,0.35);
+				font-family: Source Sans Pro, Helvetica, sans-serif;
+				font-size: 0.65rem;
+				letter-spacing: 0.1em;
+				white-space: nowrap;
+			}
+			#wavelength-slider {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 180px;
+				height: 2px;
+				border-radius: 1px;
+				background: rgba(255,255,255,0.2);
+				outline: none;
+				cursor: pointer;
+			}
+			#wavelength-slider::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				width: 11px;
+				height: 11px;
+				border-radius: 50%;
+				background: rgba(255,255,255,0.8);
+				cursor: pointer;
+				border: none;
+			}
+			#wavelength-slider::-moz-range-thumb {
+				width: 11px;
+				height: 11px;
+				border-radius: 50%;
+				background: rgba(255,255,255,0.8);
+				border: none;
+				cursor: pointer;
+			}
+			#header .content {
+				border-top-width: 0;
+				border-bottom-width: 0;
+			}
+			.header-inner {
+				display: flex !important;
+				align-items: flex-start;
+				gap: 2rem;
+				text-align: left !important;
+			}
+			/* White rules above and below the header row, spanning photo-left to text-right */
+			#header .content .inner.header-inner {
+				padding: 1.5rem 0;
+				border-top: solid 1px #ffffff;
+				border-bottom: solid 1px #ffffff;
+			}
+			.header-photo {
+				width: 180px;
+				height: 285px;
+				border-radius: 0;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+			.header-text h1,
+			.header-text p {
+				text-align: left;
+			}
+			.header-text nav ul li {
+				flex: 1;
+			}
+			.header-text nav ul li a {
+				min-width: 0;
+				width: 100%;
+				white-space: nowrap;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			#main article {
+				background-color: #000000;
+			}
+			#main article#Research {
+				width: 90vw;
+				max-width: 90vw;
+			}
+				#main article#CV {
+					width: 70vw;
+					max-width: 70vw;
+				}
+			#wavelength-control {
+				transition: opacity 0.3s ease-in-out;
+			}
+			body:has(#Research.active) #wavelength-control,
+				body:has(#CV.active) #wavelength-control {
+				opacity: 0;
+				pointer-events: none;
+			}
+			.paper {
+				display: flex;
+				align-items: center;
+				gap: 3rem;
+				padding: 2.5rem 0;
+				border-top: solid 1px rgba(255,255,255,0.15);
+			}
+			.paper.reverse {
+				flex-direction: row-reverse;
+			}
+			.paper-text {
+				flex: 1.2 1 0;
+				min-width: 0;
+			}
+			.paper-figure {
+				flex: 1 1 0;
+				min-width: 0;
+				text-align: center;
+			}
+			.paper-figure a {
+				display: block;
+				border-bottom: 0;
+			}
+			.paper-figure img {
+				width: 100%;
+				height: auto;
+								transition: opacity 0.2s ease-in-out;
+			}
+							.paper-figure p.small {
+					text-align: left;
+					margin-top: 0.4rem;
+				}
+				.paper-figure p.small a {
+					display: inline;
+					border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
+				}
+				.paper-figure a:hover img {
+				opacity: 0.85;
+			}
+			.paper-status {
+				display: inline-block;
+				text-transform: uppercase;
+				letter-spacing: 0.15rem;
+				font-size: 0.6rem;
+				padding: 0.25rem 0.6rem;
+				border-radius: 3px;
+				margin-bottom: 0.75rem;
+			}
+			.status-published {
+				color: #9fe6b8;
+				background: rgba(80, 200, 120, 0.15);
+				border: solid 1px rgba(80, 200, 120, 0.4);
+			}
+			.paper-link {
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				letter-spacing: 0.15rem;
+				white-space: nowrap;
+				margin-left: 0.75rem;
+			}
+			.status-progress {
+				color: #ffd699;
+				background: rgba(255, 180, 80, 0.12);
+				border: solid 1px rgba(255, 180, 80, 0.4);
+			}
+			.research-intro {
+				font-size: 1.05rem;
+				line-height: 1.75;
+				max-width: none;
+				margin-bottom: 1rem;
+			}
+			.paper-text h3 {
+				margin-bottom: 1rem;
+			}
+			@media screen and (max-width: 736px) {
+				.paper, .paper.reverse {
+					flex-direction: column;
+					gap: 1.5rem;
+				}
+			}
+						.about-inner {
+					display: flex;
+					align-items: stretch;
+					gap: 1.5rem;
+				}
+				.about-photo-wrap {
+					flex-shrink: 0;
+					align-self: stretch;
+					padding-bottom: 1.4em;
+				}
+				.about-photo {
+					width: 195px;
+					height: 100%;
+					display: block;
+					object-fit: cover;
+					object-position: center top;
+				}
+				.about-text {
+					flex: 1;
+					min-width: 0;
+				}
+				@media screen and (max-width: 480px) {
+					.about-inner { flex-direction: column; }
+					.about-photo { width: 100%; height: 200px; }
+				}
+				.status-submitted {
+					color: #99d6f0;
+					background: rgba(80, 180, 230, 0.12);
+					border: solid 1px rgba(80, 180, 230, 0.4);
+				}
+</style>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -25,23 +276,24 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="content">
-							<div class="inner">
-								<h1>Sydney Jenkins </h1>
-								<p> PhD Candidate, NSF Graduate Research Fellow in Exoplanet Science</p>
-								<p> Department of Physics, Massachusetts Institute of Technology </p>
-								<p>  <a href="mailto:sydneyaj@mit.edu">sydneyaj@mit.edu</a> 
+							<div class="inner header-inner">
+								<img src="myimages/headshot2.jpg" alt="Sydney Jenkins" class="header-photo">
+								<div class="header-text">
+									<h1>Sydney Jenkins </h1>
+									<p> PhD Candidate, NSF Graduate Research Fellow in Exoplanet Science</p>
+									<p> Department of Physics, Massachusetts Institute of Technology </p>
+									<p>  <a href="mailto:sydneyaj@mit.edu">sydneyaj@mit.edu</a></p>
+									<nav>
+										<ul>
+											<li><a href="#About">About Me</a></li>
+											<li><a href="#Research">Research</a></li>
+											<li><a href="#CV">CV</a></li>
+											<li><a href="#Contact">Contact</a></li>
+										</ul>
+									</nav>
+								</div>
 							</div>
 						</div>
-						<nav>
-							<ul>
-								<li><a href="#About">About Me</a></li>
-								<li><a href="#Research">Research</a></li>
-								<li><a href="#CV">CV</a></li>
-								<li><a href="#Contact">Contact</a></li>
-								<!-- <li><a href="#outreach">Outreach</a></li>-->
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
 					</header>
 
 				<!-- Main -->
@@ -49,42 +301,119 @@
 						<!-- Intro -->
 							<article id="About">
 								<h2 class="major">About Me</h2>
-								<span class="image main"><img src="myimages/headshot2.jpg" alt="" /></span>
-								<p>Hello! My name is Sydney Jenkins (she/her) and I am a fifth-year graduate student working with <a href="https://avanderburg.github.io/index.html"> Prof. Andrew Vanderburg </a> at the Massachusetts Institute of Technology. I previously earned a BA in physics and BS in computer science at the University of Chicago. My PhD research focuses on the discovery and characterization of planets around white dwarfs. </p>
-								<p>Outside of science, you can usually find me reading, hiking, or forgetting to water my plants. </p>
+							<div class="about-inner">
+								<div class="about-photo-wrap"><img src="myimages/headshot2.jpg" alt="Sydney Jenkins" class="about-photo"></div>
+								<div class="about-text">
+									<p>Hello! My name is Sydney Jenkins (she/her) and I am a fifth-year graduate student working with <a href="https://avanderburg.github.io/index.html"> Prof. Andrew Vanderburg </a> at the Massachusetts Institute of Technology. I previously earned a BA in physics and BS in computer science at the University of Chicago. My PhD research focuses on the discovery and characterization of planets around white dwarfs. </p>
+									<p>Outside of science, you can usually find me reading, hiking, or forgetting to water my plants. </p>
+								</div>
+							</div>
 						</article>
 
 						<!-- Research--> 
 							<article id="Research">
 								<h2 class="major">Research</h2>
-								<h3>Searching for White Dwarf Planets</h3>
-								<h4>MEOW Survey </a></h4>
-								<p>Most known exoplanets orbit stars which will eventually evolve into white dwarfs, but little is known about the fates of these systems after their hosts leave the main sequence. We aim to expand the number of known white dwarf planets. Using JWST spectroscopy, we can now identify both resolved planets (with direct imaging) and unresolved planets (by searching for infrared excesses in the white dwarf's spectrum). We are currently performing a survey of white dwarfs called the MIRI survey for Exoplanets Orbiting White Dwarfs (MEOW), led by <a href="https://sites.google.com/view/maryannelimbach/home"> Dr. Mary Anne Limbach. </a>  </p>
-								<img src="myimages/WD0310.png" alt="" width="540" >
-								<p class="small"> <font size="2"> <b>Figure 1:</b> <i>False color image of a white dwarf taken with the JWST/MIRI imager. </i></font></p>
-								
-								<h3>Characterizing White Dwarf Planets</h3>
-								<h4>JWST Follow-Up of First Planet Transiting a White Dwarf </a></h4>
-								<p>The first transiting planet candidate found orbiting a white dwarf, WD 1856 b, was discovered with TESS, and could play an important role in our understanding of post-main-sequence planetary evolution. However, much is still unknown about its origins, including how it reached its current orbit. The best way to distinguish between possible formation scenarios is by constraining WD 1856 b’s mass, as a lower (~1 Jupiter mass) mass would likely indicate the planet had migrated in at high eccentricity, while a larger (10-15 Jupiter masses) mass leaves common envelope evolution as a viable explanation. 
-								We identify its thermal emission with JWST/NIRSPEC spectroscopy and estimate a mass of 9 <span>&#177;</span> 4 M<sub>Jup</sub>. Ongoing work is being done to finalize our data reductions. </p>
-								<img src="myimages/WD1856.png" alt="" width="540" >
-								<p class="small"> <font size="2"> <b>Figure 2:</b>  <i>WD 1856 b's transmission spectrum. Previous data from Spitzer is shown for comparison. With JWST, we can probe the thermal excess beyond 4 <span>&#956;</span>m, indicated by the shaded region.</i></font></p>
 
-								<h3>White Dwarf Pollution</h3>
-								<h4>Absence of a Correlation between White Dwarf Planetary Accretion and Primordial Stellar Metallicity <a href="https://ui.adsabs.harvard.edu/abs/2024MNRAS.532..394J/abstract">(Jenkins et al. 2024)</a></a></h4>
-								<p>Over a quarter of white dwarfs have photospheric metal pollution, which is evidence for recent accretion of exoplanetary material. While a wide range of mechanisms have been proposed to account for this pollution, there are currently few observational constraints to differentiate between them. To investigate the driving mechanism, we observe a sample of polluted and non-polluted white dwarfs in wide binary systems with main-sequence stars. Using the companion stars' metallicities as a proxy for the white dwarfs' primordial metallicities, we compare the metallicities of polluted and non-polluted systems. Because there is a well-known correlation between giant planet occurrence and higher metallicity (with a stronger correlation for close-in and eccentric planets), these metallicity distributions can be used to probe the role of gas giants in white dwarf accretion. </p>
-								</p>We find that the metallicity distributions of polluted and non-polluted systems are consistent with the hypothesis that both samples have the same underlying metallicity distribution. Additionally, we find no significant trend between white dwarf accretion rates and metallicity. These findings suggest that giant planets are not the dominant cause of white dwarf accretion events in binary systems. </p>
-								<img src="myimages/WDPollution.png" alt="" width="540" >
-								<p class="small"><font size="2"> <b>Figure 3:</b> <i>Metallicity distributions of white dwarf systems. Left: Metallicity distribution of polluted systems, with error bars shown in black. Middle: Metallicity
-										distribution of non-polluted systems, with error bars shown in black. Right: CDFs of non-polluted and polluted systems, shown in orange and purple, respectively. </i></font></p>		
+								<p class="research-intro">In the past few decades, we have discovered thousands of planets orbiting main-sequence stars—stable, long-lived stars like our Sun that are fusing hydrogen in their cores. However, we know relatively little about what happens to these planets once their host stars die. <b>Do planetary systems survive stellar death, and if so, how do they change?</b> My research centers on answering this fundamental question by discovering and characterizing planets around white dwarfs, the Earth-sized remnant left behind when Sun-like stars exhaust their fuel and die. Using JWST and ground-based telescopes, I’m uncovering how planetary systems survive stellar death and evolve over billions of years.</p>
+
+								<!-- Paper: MEOW Survey -->
+								<div class="paper">
+									<div class="paper-text">
+										<h3>MEOW & PAWS Surveys</h3>
+										<span class="paper-status status-progress">Ongoing Observations</span>
+										<p>JWST's direct imaging capabilities provide a powerful new tool to probe the demographics of evolved systems by searching for giant planets around white dwarf stars. Two programs leading this effort are the <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=4403">MIRI Exoplanets Orbiting White dwarfs (MEOW) survey</a> and its companion program, the <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=7833">Planet Authentication in White-dwarf Systems (PAWS) survey</a>. MEOW has mapped 16 nearby white dwarf systems with a combination of direct imaging and the thermal excess technique, identifying dozens of planet candidates. Ongoing follow-up observations with PAWS allows us definitively differentiate between true planets and spurious background sources using high-precision proper motion measurements. I am currently using the combined MEOW and PAWS datasets to search for new planets and to place constraints on the demographics of planets around white dwarfs. Our results will have <b>important implications for the post-main-sequence evolution of planetary systems.</b></p>
+									</div>
+									<div class="paper-figure">
+										<a href="myimages/MEOW.png" target="_blank"><img src="myimages/MEOW.png" alt="False color image of WD 0310-688 taken with JWST/MIRI as part of the MEOW survey"></a>
+									<p class="small"><font size="2"><b>Figure 1:</b> <i>False color image of a white dwarf (WD 0310-688, center) taken with the JWST/MIRI imager as part of the MEOW survey. Image credit: <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ad74ed" target="_blank">Limbach et al. (including Jenkins) 2024</a>.</i></font></p>
+									</div>
+								</div>
+
+								
+						
+						<!-- Paper: WD 1856 b Atmosphere -->
+						<div class="paper reverse">
+							<div class="paper-text">
+								<h3>Probing the Dynamical History of a White Dwarf Planet</h3>
+								<span class="paper-status status-progress">Ongoing Observations</span>
+								<p>One of the few known white dwarf planets is WD 1856+534 b, which orbits at just 0.02 au from its host star—close enough that it should have been engulfed during the star’s transition off the main sequence. Two main dynamical pathways have been proposed to explain this: high-eccentricity migration and common envelope evolution. I am <b>PI of a <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=9157" target="_blank">JWST program</a> to constrain WD 1856 b’s dynamical history</b> by searching for signatures of common envelope evolution in the planet’s atmosphere. If it did undergo common envelope evolution, it will be the first known planet to have survived engulfment by its star. Regardless of its dynamical history, our program will also probe the atmospheric physics of one of the coldest known planets. These results will provide critical insight into the dynamics of post-main-sequence systems and the atmospheres of cold worlds.</p>
+							</div>
+							<div class="paper-figure">
+								<a href="myimages/WD1856_artist.jpg" target="_blank"><img src="myimages/WD1856_artist.jpg" alt="Artist impression of WD 1856+534 b"></a>
+								<p class="small"><font size="2"><b>Figure 2:</b> <i>Artist’s impression of WD 1856+534 and its planet. Image credit: NASA’s Goddard Space Flight Center.</i></font></p>
+							</div>
+						</div>
+
+						<!-- Paper: WD 1856 b Proper Motions -->
+						<div class="paper">
+							<div class="paper-text">
+								<h3>JWST Proper Motion Search for Outer Companions to WD 1856+534 b</h3>
+								<span class="paper-status status-progress">In Preparation</span>
+								<p>While my JWST observing program is dedicated to searching for signatures of CEE, we are also performing a complementary search for evidence that WD 1856 b underwent high-eccentricity migration. Using two epochs of <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5204" target="_blank">JWST MIRI imaging observations</a>, we have measured the proper motions of all nearby sources to identify any potential perturbers. While we do not identify any co-moving planetary companions, we are able to place <b>the first strong constraints on the presence of any distant outer planets.</b> Our combined imaging and TTV constraints rule out planets more massive than WD 1856 b across much of the searched parameter space. If no companion is found within the remaining allowed region, it suggests that either no additional planets are present in the system and WD 1856b migrated via a non-scattering mechanism, or any perturbing planet has a lower mass than WD 1856 b and was likely ejected from the system.</p>
+							</div>
+							<div class="paper-figure">
+								<a href="myimages/WD1856_PM_invert.png" target="_blank"><img src="myimages/WD1856_PM_invert.png" alt="WD 1856+534 proper motion search"></a>
+								<p class="small"><font size="2"><b>Figure 3:</b> <i>Difference images in both the F1500W and F1800W filters. Distant background objects show negligible apparent motion, and therefore have small residuals. In contrast, nearby and fast-moving objects produce prominent positive and negative residuals. The white dwarf, center, exhibits clear motion. No other sources appear to be co-moving with the white dwarf.</i></font></p>
+							</div>
+						</div>
+						<!-- Paper: WD 1856 b -->
+								<div class="paper reverse">
+									<div class="paper-text">
+										<h3>Atmospheric Signatures of Common Envelope Evolution</h3>
+										<span class="paper-status status-submitted">Submitted</span>
+										<p>The majority of confirmed exoplanets orbit within 1 AU of a main-sequence star. When their stellar hosts evolve off the MS, many of these planets will be engulfed and destroyed, creating empty &ldquo;forbidden&rdquo; zones around the stars as they evolve to their final state as a white dwarf. However, several confirmed and candidate planets have been found within this forbidden zone. Two formation scenarios have been proposed to explain the existence of these close-in planets: high-eccentricity migration and common envelope evolution (CEE). There are currently few observational tests to distinguish between these pathways. In this study, we investigate whether CEE could leave a detectable atmospheric signature by modeling the inspiral and accretion of an engulfed planet inspiraling into an AGB star. We then use simulated emission spectra to model the impact of this accretion on the planet’s thermal emission, and find that CEE can increase thermal emission by up to 9.0% for a cool planet such as WD 1856 b. This signature may be observable in the most favorable cases, providing a <b>potential new probe for investigating the dynamical history of close-in planets around white dwarfs.</b></p>
+									</div>
+									<div class="paper-figure">
+										<a href="myimages/CEE.gif" target="_blank"><img src="myimages/CEE.gif" alt="WD 1856 b's transmission spectrum"></a>
+										<p class="small"><font size="2"><b>Figure 4:</b> <i>Mass accretion of an engulfed planet over time for a variety of planet masses and accretion efficiencies &epsilon;.</i></font></p>
+									</div>
+								</div>
+
+														<!-- Paper: TOI-5800 b -->
+						<div class="paper">
+							<div class="paper-text">
+								<h3>Confirmation of TOI-5800 b: An Eccentric Sub-Neptune Moving Into the Evaporation Desert</h3>
+								<span class="paper-status status-published">Published</span><a class="paper-link" href="https://iopscience.iop.org/article/10.3847/2041-8213/adea46" target="_blank">Read paper&nbsp;&rarr;</a>
+								<p>Though missions such as Kepler, K2, and TESS have discovered &gt;2,000 sub-Neptune and Neptunian planets, there is a dearth of such planets at close-in (P&#8818;3 days) orbits. This feature, called the Neptune desert or the evaporation desert, is believed to be primarily shaped by planetary migration and photoevaporation. However, this region is not completely devoid of planets &mdash; a small number of very hot Neptunes reside within the desert. These planets provide an opportunity to directly probe the effects of migration and photoevaporation. We present confirmation of TOI-5800 b, an eccentric sub-Neptune on a &approx;2.6 day period that is likely actively undergoing tidal migration. We use radial velocity measurements to constrain TOI-5800 b’s eccentricity (0.39&plusmn;0.07). This eccentricity is unusually high given the planet’s short orbit, suggesting that TOI-5800 is currently experiencing high levels of tidal heating as it moves into the desert. Ranked as a top candidate for transmission and emission spectroscopy within its temperature and radius regime, TOI-5800 b is a prime target for atmospheric characterization with JWST. <b>TOI-5800 b presents a unique opportunity to study the atmosphere of a planet undergoing tidal heating and to probe the composition of sub-Neptune planets.</b></p>
+							</div>
+							<div class="paper-figure">
+								<a href="myimages/TOI5800.png" target="_blank"><img src="myimages/TOI5800.png" alt="TOI-5800 b orbital and atmospheric characterization"></a>
+								<p class="small"><font size="2"><b>Figure 5:</b> <i>Radius and semi-major axis of planets listed in the NASA Exoplanet Archive. The Neptune desert is demarked by the white dashed lines. TOI-5800 b is shown in yellow. We expect the planet to circularize to a closer-in orbit within the yellow shaded region.</i></font></p>
+							</div>
+						</div>
+
+						<!-- Paper: Jenkins et al. 2024 -->
+								<div class="paper reverse">
+									<div class="paper-text">
+										<h3>Absence of a Correlation between White Dwarf Planetary Accretion and Primordial Stellar Metallicity </h3>
+										<span class="paper-status status-published">Published </span> <a class="paper-link" href="https://academic.oup.com/mnras/article/532/1/394/7696345" target="_blank">Read paper&nbsp;&rarr;</a>
+										<p>Over a quarter of white dwarfs have photospheric metal pollution, which is evidence for recent accretion of exoplanetary material. While a wide range of mechanisms have been proposed to account for this pollution, there are currently few observational constraints to differentiate between them. To investigate the driving mechanism, we observe a sample of polluted and non-polluted white dwarfs in wide binary systems with main-sequence stars. Because there is a well-known correlation between giant planet occurrence and higher metallicity, we measure each system’s metallicity to probe the role of gas giants in driving white dwarf accretion. We find no significant difference in the metallicity distributions of polluted and non-polluted systems, suggesting that <b>giant planets may not be the dominant cause of white dwarf accretion events in binary systems.</b></p>
+									</div>
+									<div class="paper-figure">
+										<a href="myimages/WDPollution_invert.png" target="_blank"><img src="myimages/WDPollution_invert.png" alt="Metallicity distributions of white dwarf systems"></a>
+										<p class="small"><font size="2"><b>Figure 6:</b> <i>Metallicity distributions of white dwarf systems. Left: Metallicity distribution of polluted systems, with error bars shown in black. Middle: Metallicity distribution of non-polluted systems, with error bars shown in black. Right: CDFs of non-polluted and polluted systems, shown in orange and purple, respectively.</i></font></p>
+									</div>
+								</div>
+							
+							<!-- Paper: Jenkins et al. 2022 -->
+							<div class="paper">
+								<div class="paper-text">
+									<h3>VLT Spectrsocopy of Ultra-faint Dwarf Galaxies</h3>
+									<span class="paper-status status-published">Published</span> <a class="paper-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/ac1353" target="_blank">Read paper&nbsp;&rarr;</a>
+									<p>We perform consistent reductions and measurements for three ultra-faint dwarf galaxies (UFDs): Bo&ouml;tes I, Leo IV and Leo V. Using the public archival data from the GIRAFFE spectrograph on the Very Large Telescope (VLT), we locate new members and provide refined measurements of physical parameters for these dwarf galaxies. We recalculate the velocity dispersions of Bo&ouml;tes I and Leo IV, identify a weak velocity gradient in Leo V, and re-analyze the Bo&ouml;tes I metallicity distribution function. Our analysis of Leo IV, Leo V and other UFDs will enhance our understanding of these enigmatic stellar populations and contribute to future dark matter studies.</p>
+								</div>
+								<div class="paper-figure">
+									<a href="myimages/UFD_invert.png" target="_blank"><img src="myimages/UFD_invert.png" alt="Ultra-faint dwarf galaxy spectroscopy"></a>
+									<p class="small"><font size="2"><b>Figure 7:</b> <i>Spectroscopic data for ultra-faint dwarf galaxies observed with VLT/GIRAFFE.</i></font></p>
+								</div>
+							</div>
 							</article>
 
 						<!-- CV -->
-							<article id="CV">
-								<h2 class="major">CV</h2>
-								<p> You can find my CV <a href="https://drive.google.com/file/d/1gS_2s2PLqV1fxcnCkPmlu0TVjx4R93Ef/view?usp=sharing">here.</a>
-								<p> <i> Last updated January, 2026. </i> </p>
-							</article>
+						<article id="CV">
+							<h2 class="major">CV</h2>
+							<div id="cv-viewer" style="overflow-y:auto; max-height:82vh; background:#525659;"></div>
+						</article>
 
 						<!-- Contact -->
 						<article id="Contact">
@@ -381,7 +710,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</div>
 
 		<!-- BG -->
-			<div id="bg"></div>
+			<div id="bg">
+				<canvas id="starfield"></canvas>
+			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -390,5 +721,296 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+		<!-- Wavelength filter control -->
+			<div id="wavelength-control">
+				<div id="wavelength-label">λ = 15.0 μm</div>
+				<div class="wl-slider-row">
+					<span class="wl-end">1 μm</span>
+					<input type="range" id="wavelength-slider" min="1" max="30" step="0.1" value="15">
+					<span class="wl-end">30 μm</span>
+				</div>
+			</div>
+
+		<!-- Starfield -->
+			<script>
+			(function () {
+
+				var canvas = document.getElementById('starfield');
+				var ctx    = canvas.getContext('2d');
+				var stars  = [];
+				var NUM_STARS  = 350;
+				var wavelength = 15e-6; // meters, default 15 μm
+				var wd         = { x: 0, y: 0, vx: 0, vy: 0, temp: 4900, brightness: 1.0 };
+				var planet     = { angle: Math.random() * 6.2832, orbitRadius: 50,
+				                   omega: 6.2832 / 10, temp: 300, brightness: 1.0, radius: 1.5 };
+				var lastTime   = null;
+
+				// hc/k in m·K
+				var HC_K = 0.014388;
+
+				// Planck spectral radiance, proportional (same λ^5 for all comparisons)
+				function planck(lam, T) {
+					var x = HC_K / (lam * T);
+					return 1.0 / (lam*lam*lam*lam*lam * (Math.exp(x) - 1.0));
+				}
+
+				// Wavelength in microns → false-color RGB (short=blue, long=red)
+				function irColor(um) {
+					// Luminance decreases left→right: blue (L≈0.73) > warm-grey (L≈0.42) > red (L≈0.22)
+					// 1 μm → (200,225,255) bright blue | 15 μm → (175,170,160) warm grey | 30 μm → (200,65,35) red
+					var t = Math.max(0, Math.min(1, (um - 1) / 29));
+					var m = 14 / 29; // t at 15 μm
+					var s;
+					if (t <= m) {
+						s = t / m;
+						return [Math.round(200 - s * 25), Math.round(225 - s * 55), Math.round(255 - s * 95)];
+					} else {
+						s = (t - m) / (1 - m);
+						return [Math.round(175 + s * 25), Math.round(170 - s * 105), Math.round(160 - s * 125)];
+					}
+				}
+
+				// Random main-sequence temperature weighted by observed stellar frequency
+				// O(0.1%), B(0.4%), A(0.6%), F(3%), G(8%), K(13%), M(~75%)
+				function randomTemp() {
+					var r = Math.random();
+					if (r < 0.001) return 30000 + Math.random() * 20000;
+					if (r < 0.005) return 10000 + Math.random() * 20000;
+					if (r < 0.011) return  7500 + Math.random() *  2500;
+					if (r < 0.041) return  6000 + Math.random() *  1500;
+					if (r < 0.121) return  5200 + Math.random() *   800;
+					if (r < 0.251) return  3700 + Math.random() *  1500;
+					return 2400 + Math.random() * 1300;
+				}
+
+				function randomRadius() {
+					var r = Math.random();
+					if (r < 0.70) return 0.4 + Math.random() * 0.5;
+					if (r < 0.95) return 0.9 + Math.random() * 0.8;
+					return 1.7 + Math.random() * 0.9;
+				}
+
+				function resetWD() {
+					var w = canvas.width, h = canvas.height;
+					var side = Math.floor(Math.random() * 4);
+					if      (side === 0) { wd.x = Math.random() * w; wd.y = 0; }
+					else if (side === 1) { wd.x = w;                 wd.y = Math.random() * h; }
+					else if (side === 2) { wd.x = Math.random() * w; wd.y = h; }
+					else                 { wd.x = 0;                 wd.y = Math.random() * h; }
+					var angle = Math.atan2(h/2 - wd.y, w/2 - wd.x) + (Math.random() - 0.5) * Math.PI * 0.75;
+					var speed = 40 + Math.random() * 30; // 40–70 px/s
+					wd.vx = Math.cos(angle) * speed;
+					wd.vy = Math.sin(angle) * speed;
+				}
+
+				function resize() {
+					canvas.width  = window.innerWidth;
+					canvas.height = window.innerHeight;
+				}
+
+				// WD and planet are point sources at the same distance: flux ∝ R² × B(λ,T).
+				// Calibrate the planet's effective area so its flux equals the WD's at 20 μm
+				// (works out to ~8× the WD radius); beyond 20 μm the planet's cooler, redder
+				// spectrum makes it slightly brighter than the WD.
+				var CROSSOVER_LAM    = 20e-6;
+				var PLANET_AREA_RATIO = planck(CROSSOVER_LAM, wd.temp) / planck(CROSSOVER_LAM, planet.temp);
+
+				// Shared log-flux normalization for the WD+planet scale.
+				// WD at λ=1μm is the maximum (hot, brightest in our range).
+				// Planet at λ=1μm is the minimum (cold, far below its Planck peak).
+				var LOG_WD_PLANET_MAX   = Math.log(planck(1e-6, wd.temp));
+				var LOG_WD_PLANET_MIN   = Math.log(PLANET_AREA_RATIO * planck(1e-6, planet.temp));
+				var LOG_WD_PLANET_RANGE = LOG_WD_PLANET_MAX - LOG_WD_PLANET_MIN;
+
+				function updateBrightnesses() {
+					// Stars: normalize log B(λ,T) across stars only
+					var logBs = new Array(stars.length);
+					var logMin = Infinity, logMax = -Infinity;
+					for (var i = 0; i < stars.length; i++) {
+						logBs[i] = Math.log(planck(wavelength, stars[i].temp));
+						if (logBs[i] < logMin) logMin = logBs[i];
+						if (logBs[i] > logMax) logMax = logBs[i];
+					}
+					var logRange = logMax - logMin;
+					for (var i = 0; i < stars.length; i++) {
+						var rel = logRange > 0 ? (logBs[i] - logMin) / logRange : 1;
+						stars[i].brightness = Math.max(0, Math.min(1, rel));
+					}
+
+					// WD: brightness ∝ log flux, dimming gently across the range.
+					var logF_WD = Math.log(planck(wavelength, wd.temp));
+					wd.brightness = Math.max(0, Math.min(1, (logF_WD - LOG_WD_PLANET_MIN) / LOG_WD_PLANET_RANGE));
+
+					// Planet: scaled by its LINEAR flux ratio to the WD, so it stays dim through
+					// the mid-IR, matches the WD exactly at 20 μm, then edges brighter at longer λ.
+					var fluxRatio = PLANET_AREA_RATIO * planck(wavelength, planet.temp) / planck(wavelength, wd.temp);
+					planet.brightness = Math.max(0, Math.min(1, wd.brightness * fluxRatio));
+				}
+
+				function init() {
+					stars = [];
+					for (var i = 0; i < NUM_STARS; i++) {
+						stars.push({
+							x:          Math.random(),
+							y:          Math.random(),
+							radius:     randomRadius(),
+							temp:       randomTemp(),
+							freq:       0.15 + Math.random() * 1.4,
+							phase:      Math.random() * Math.PI * 2,
+							brightness: 1.0
+						});
+					}
+					resetWD();
+					updateBrightnesses();
+				}
+
+				function draw(timestamp) {
+					var t   = timestamp / 1000;
+					var dt  = lastTime !== null ? (timestamp - lastTime) / 1000 : 0;
+					lastTime = timestamp;
+					var w   = canvas.width;
+					var h   = canvas.height;
+					var col = irColor(wavelength * 1e6);
+
+					// Move white dwarf; respawn at a new random boundary edge when it exits
+					wd.x += wd.vx * dt;
+					wd.y += wd.vy * dt;
+					if (wd.x < 0 || wd.x > w || wd.y < 0 || wd.y > h) {
+						resetWD();
+					}
+
+					ctx.clearRect(0, 0, w, h);
+
+					// Draw background stars
+					for (var i = 0; i < stars.length; i++) {
+						var s = stars[i];
+						if (s.brightness < 0.01) continue;
+						var twinkle = (Math.sin(6.2832 * s.freq * t + s.phase) + 1) * 0.5;
+						var alpha   = Math.min(1.0, s.brightness * 2 * (0.15 + 0.85 * twinkle));
+						ctx.beginPath();
+						ctx.arc(s.x * w, s.y * h, s.radius, 0, 6.2832);
+						ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha.toFixed(3) + ')';
+						ctx.fill();
+					}
+
+					// Update planet orbit (CCW on screen = decreasing angle)
+					planet.angle -= planet.omega * dt;
+					var px = wd.x + planet.orbitRadius * Math.cos(planet.angle);
+					var py = wd.y + planet.orbitRadius * Math.sin(planet.angle);
+
+					// Draw planet — same rendering as WD so equal brightness = equal appearance
+					if (planet.brightness > 0.01) {
+						var pAlpha = Math.min(1.0, planet.brightness * 1.2);
+						var pGrad = ctx.createRadialGradient(px, py, 0, px, py, 14);
+						pGrad.addColorStop(0, 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + (pAlpha * 0.5).toFixed(3) + ')');
+						pGrad.addColorStop(1, 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',0)');
+						ctx.beginPath();
+						ctx.arc(px, py, 14, 0, 6.2832);
+						ctx.fillStyle = pGrad;
+						ctx.fill();
+						ctx.beginPath();
+						ctx.arc(px, py, 3, 0, 6.2832);
+						ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + pAlpha.toFixed(3) + ')';
+						ctx.fill();
+					}
+
+					// Draw white dwarf — no twinkle, glow + bright core
+					var wdAlpha = Math.min(1.0, wd.brightness * 1.2);
+					var grad = ctx.createRadialGradient(wd.x, wd.y, 0, wd.x, wd.y, 14);
+					grad.addColorStop(0, 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + (wdAlpha * 0.5).toFixed(3) + ')');
+					grad.addColorStop(1, 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',0)');
+					ctx.beginPath();
+					ctx.arc(wd.x, wd.y, 14, 0, 6.2832);
+					ctx.fillStyle = grad;
+					ctx.fill();
+					ctx.beginPath();
+					ctx.arc(wd.x, wd.y, 3, 0, 6.2832);
+					ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + wdAlpha.toFixed(3) + ')';
+					ctx.fill();
+
+					// "white dwarf" label — follows the dot
+					ctx.font = '11px sans-serif';
+					ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + (wdAlpha * 0.85).toFixed(3) + ')';
+					ctx.fillText('white dwarf', wd.x + 8, wd.y + 4);
+
+					requestAnimationFrame(draw);
+				}
+
+				// Wire up slider
+				var slider = document.getElementById('wavelength-slider');
+				var label  = document.getElementById('wavelength-label');
+				slider.addEventListener('input', function () {
+					var um = parseFloat(this.value);
+					wavelength = um * 1e-6;
+					label.textContent = 'λ = ' + um.toFixed(1) + ' μm';
+					updateBrightnesses();
+				});
+
+				resize();
+				window.addEventListener('resize', resize);
+				init();
+				requestAnimationFrame(draw);
+			})();
+			</script>
+
+
+	
+		<script>
+			(function () {
+				var PDFJS_WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+				var rendered = false;
+
+				function renderCV() {
+					if (rendered) return;
+					var container = document.getElementById('cv-viewer');
+					if (!container || container.clientWidth === 0) {
+						setTimeout(renderCV, 150);
+						return;
+					}
+					rendered = true;
+					pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+					pdfjsLib.getDocument('myimages/Jenkins_CV.pdf').promise.then(function (pdf) {
+						var canvases = [];
+						for (var i = 1; i <= pdf.numPages; i++) {
+							var c = document.createElement('canvas');
+							c.style.cssText = 'display:block; width:100%; margin-bottom:4px;';
+							container.appendChild(c);
+							canvases.push({ num: i, canvas: c });
+						}
+						canvases.forEach(function (p) {
+							pdf.getPage(p.num).then(function (page) {
+								var w = container.clientWidth;
+								var vp = page.getViewport({ scale: 1.0 });
+								var scale = w / vp.width;
+								var sv = page.getViewport({ scale: scale });
+								p.canvas.width = sv.width;
+								p.canvas.height = sv.height;
+								page.render({ canvasContext: p.canvas.getContext('2d'), viewport: sv });
+							});
+						});
+					}).catch(function () {
+						/* file:// fallback: use browser built-in viewer */
+						container.innerHTML = '<object data="myimages/Jenkins_CV.pdf" type="application/pdf" width="100%" style="height:82vh; display:block;"></object>';
+					});
+				}
+
+				window.addEventListener('hashchange', function () {
+					if (location.hash === '#CV') setTimeout(renderCV, 200);
+				});
+				if (location.hash === '#CV') setTimeout(renderCV, 200);
+
+				/* also watch for the Dimension theme adding .active to #CV */
+				var cvArticle = document.getElementById('CV');
+				if (cvArticle && window.MutationObserver) {
+					new MutationObserver(function (mutations) {
+						mutations.forEach(function (m) {
+							if (m.attributeName === 'class' && cvArticle.classList.contains('active')) {
+								setTimeout(renderCV, 200);
+							}
+						});
+					}).observe(cvArticle, { attributes: true });
+				}
+			})();
+		</script>
 	</body>
 </html>
