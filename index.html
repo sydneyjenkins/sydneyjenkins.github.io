@@ -146,15 +146,10 @@
 				width: 90vw;
 				max-width: 90vw;
 			}
-				#main article#CV {
-					width: 70vw;
-					max-width: 70vw;
-				}
 			#wavelength-control {
 				transition: opacity 0.3s ease-in-out;
 			}
-			body:has(#Research.active) #wavelength-control,
-				body:has(#CV.active) #wavelength-control {
+			body:has(#Research.active) #wavelength-control {
 				opacity: 0;
 				pointer-events: none;
 			}
@@ -324,7 +319,6 @@
 					}
 				}
 </style>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -345,7 +339,7 @@
 										<ul>
 											<li><a href="#About">About Me</a></li>
 											<li><a href="#Research">Research</a></li>
-											<li><a href="#CV">CV</a></li>
+											<li><a href="myimages/Jenkins_CV.pdf" target="_blank" rel="noopener">CV</a></li>
 											<li><a href="#Contact">Contact</a></li>
 										</ul>
 									</nav>
@@ -476,12 +470,6 @@
 								</div>
 							</div>
 							</article>
-
-						<!-- CV -->
-						<article id="CV">
-							<h2 class="major">CV</h2>
-							<div id="cv-viewer" style="overflow-y:auto; max-height:82vh; background:#525659;"></div>
-						</article>
 
 						<!-- Contact -->
 						<article id="Contact">
@@ -1014,63 +1002,5 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 
 	
-		<script>
-			(function () {
-				var PDFJS_WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-				var rendered = false;
-
-				function renderCV() {
-					if (rendered) return;
-					var container = document.getElementById('cv-viewer');
-					if (!container || container.clientWidth === 0) {
-						setTimeout(renderCV, 150);
-						return;
-					}
-					rendered = true;
-					pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
-					pdfjsLib.getDocument('myimages/Jenkins_CV.pdf').promise.then(function (pdf) {
-						var canvases = [];
-						for (var i = 1; i <= pdf.numPages; i++) {
-							var c = document.createElement('canvas');
-							c.style.cssText = 'display:block; width:100%; margin-bottom:4px;';
-							container.appendChild(c);
-							canvases.push({ num: i, canvas: c });
-						}
-						canvases.forEach(function (p) {
-							pdf.getPage(p.num).then(function (page) {
-								var w = container.clientWidth;
-								var dpr = window.devicePixelRatio || 1;
-								var vp = page.getViewport({ scale: 1.0 });
-								var scale = (w / vp.width) * dpr;
-								var sv = page.getViewport({ scale: scale });
-								p.canvas.width = sv.width;
-								p.canvas.height = sv.height;
-								page.render({ canvasContext: p.canvas.getContext('2d'), viewport: sv });
-							});
-						});
-					}).catch(function () {
-						/* file:// fallback: use browser built-in viewer */
-						container.innerHTML = '<object data="myimages/Jenkins_CV.pdf" type="application/pdf" width="100%" style="height:82vh; display:block;"></object>';
-					});
-				}
-
-				window.addEventListener('hashchange', function () {
-					if (location.hash === '#CV') setTimeout(renderCV, 200);
-				});
-				if (location.hash === '#CV') setTimeout(renderCV, 200);
-
-				/* also watch for the Dimension theme adding .active to #CV */
-				var cvArticle = document.getElementById('CV');
-				if (cvArticle && window.MutationObserver) {
-					new MutationObserver(function (mutations) {
-						mutations.forEach(function (m) {
-							if (m.attributeName === 'class' && cvArticle.classList.contains('active')) {
-								setTimeout(renderCV, 200);
-							}
-						});
-					}).observe(cvArticle, { attributes: true });
-				}
-			})();
-		</script>
 	</body>
 </html>
